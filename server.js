@@ -103,4 +103,10 @@ function escapeHtml(value) {
   })[char]);
 }
 
-app.listen(PORT, () => console.log(`Portfolio running at http://localhost:${PORT}`));
+// Export the Express app for Vercel's serverless function.
+module.exports = app;
+
+// Keep the local development server working.
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => console.log(`Portfolio running at http://localhost:${PORT}`));
+}
